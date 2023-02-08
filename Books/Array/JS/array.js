@@ -46,7 +46,24 @@ class MyArray {
             this.nElems--;
             return true;
         }
-           
+    }
+
+    removeMax(){
+        let max = 0;
+
+        if(this.nElems > 0) {
+            for(let i = 0; i<this.nElems; i++) {
+                if(this.a[i] > max) {
+                    max = this.a[i];
+                }
+            }
+            console.log("Remove max value " + max)
+            return this.delete(max);
+        } else {
+            console.log("Array is empty")
+            return -1;
+        }
+       
     }
 
     display(){
@@ -83,6 +100,10 @@ function App () {
     arr.delete(99);
     arr.delete(66);
     arr.delete(00);
+
+    arr.display();
+
+    arr.removeMax()
 
     arr.display();
 }

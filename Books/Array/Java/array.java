@@ -1,4 +1,4 @@
-class App {
+class ArrayApp {
     public static void main(String[] args) {
 
         int maxSize = 100;
@@ -27,6 +27,10 @@ class App {
         arr.delete(99);
         arr.delete(66);
         arr.delete(00);
+
+        arr.display();
+
+        arr.removeMax();
 
         arr.display();
 
@@ -74,6 +78,23 @@ class MyArray {
                 a[k] = a[k+1];
                 nElems--;
                 return true;
+    }
+
+    public long removeMax() {
+        long max = 0;
+
+        if ( nElems > 0 ) {
+            for(int j=0; j<nElems; j++) {
+                if( a[j] > max )
+                max = a[j];
+            }
+            delete(max);
+            System.out.println("Remove max value " + max);
+            return max;
+        } else {
+            System.out.println("Array is empty");
+            return -1; 
+        }
     }
 
     public void display() {
