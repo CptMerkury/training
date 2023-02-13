@@ -58,7 +58,8 @@ class MyArray {
                 }
             }
             console.log("Remove max value " + max)
-            return this.delete(max);
+            this.delete(max)
+            return max;
         } else {
             console.log("Array is empty")
             return -1;
@@ -78,7 +79,8 @@ class MyArray {
 
 function App () {
     const maxSize = 100;
-    const arr = new MyArray(maxSize)
+    const arr = new MyArray(maxSize);
+    const sorted = new MyArray(maxSize);
 
     arr.insert(99);
     arr.insert(88);
@@ -89,7 +91,6 @@ function App () {
     arr.insert(33);
     arr.insert(22);
     arr.insert(11);
-    arr.insert(00);
 
     arr.display();
 
@@ -103,9 +104,25 @@ function App () {
 
     arr.display();
 
-    arr.removeMax()
+    let i = 0;
+    let localArray = [];
 
-    arr.display();
+    while(true) {
+        let maxValue = arr.removeMax();
+        if(maxValue !== -1) {
+            localArray.push(maxValue);
+            i++;
+        } else {
+            break;
+        }
+    }
+
+    for(let j = localArray.length - 1; j >= 0; j--) {
+        sorted.insert(localArray[j])
+    }
+
+    sorted.display();
+    
 }
 
 App();

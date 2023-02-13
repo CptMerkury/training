@@ -3,7 +3,9 @@ class ArrayApp {
 
         int maxSize = 100;
         MyArray arr;
-    
+        MyArray sorted;
+        
+        sorted = new MyArray(maxSize);
 
         arr = new MyArray(maxSize);
 
@@ -16,7 +18,6 @@ class ArrayApp {
         arr.insert(33);
         arr.insert(22);
         arr.insert(11);
-        arr.insert(00);
     
         arr.display();
 
@@ -24,15 +25,32 @@ class ArrayApp {
         arr.find(99);
         arr.find(66);
 
+        arr.display();
+
         arr.delete(99);
         arr.delete(66);
-        arr.delete(00);
+        arr.delete(0);
 
         arr.display();
 
-        arr.removeMax();
+        int i = 0;
+        long[] localSorted = new long[100];
 
-        arr.display();
+        while(true) {
+            long maxInArray = arr.removeMax();
+            if (maxInArray != -1) {
+                localSorted[i] = maxInArray;
+                i++;
+            } else {
+                break;
+            }
+        }
+
+        for(int j = i - 1; j >= 0; j--) {
+            sorted.insert(localSorted[j]);
+        }
+
+        sorted.display();
 
     }
 }
