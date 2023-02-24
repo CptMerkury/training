@@ -1,4 +1,5 @@
-# Some trainig exercise
-Usage for answer: Java, JavaScript or TypeScript
+# Study repo
+- Example from Lafore book </br>
+- Example from study
 
-Maybe in future add other lang - Rust, Kotlin, C#
+Lang: `Java`, `JS`, `TS`
