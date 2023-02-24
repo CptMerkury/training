@@ -41,9 +41,9 @@ class Person {
     }
 
     public void displayPerson() {
-        System.out.print(" Last Name: " + lastName);
-        System.out.print(", First Name: " + firstName);
-        System.out.println(", Age: " + age);
+        System.out.print("FIRST NAME: " + firstName);
+        System.out.print(", LAST NAME: " + lastName);
+        System.out.println(", AGE: " + age);
     }
 
     public String getLast() {

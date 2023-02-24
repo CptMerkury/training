@@ -1,10 +1,10 @@
-class BubbleSort {
+class BubbleSortApp {
     public static void main(String[] args) {
 
         int maxSize = 100;
-        BubbleArray arr;
+        BubbleSortArray arr;
 
-        arr = new BubbleArray(maxSize);
+        arr = new BubbleSortArray(maxSize);
 
         arr.insert(44);
         arr.insert(88);
@@ -25,11 +25,11 @@ class BubbleSort {
     }
 }
 
-class BubbleArray {
+class BubbleSortArray {
     private long[] a;
     private int nElems;
 
-    public BubbleArray(int max) {
+    public BubbleSortArray(int max) {
         a = new long[max];
         nElems = 0;
     }
