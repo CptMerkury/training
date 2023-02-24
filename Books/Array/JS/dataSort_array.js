@@ -25,8 +25,8 @@ class Person {
         console.log(`FIRST NAME: ${this._getFirst()}, LAST NAME: ${this._getLast()}, AGE: ${this.getAge()}`)
     }
 
-    getNameInfo(method) {
-        switch (method) {
+    getNameInfo(field) {
+        switch (field) {
             case "Last Name":
                 return this._getLast().toLowerCase();
             case "First Name":
@@ -45,73 +45,60 @@ class DataSort {
         this.nElems = 0;
     }
 
-    _bubbleSort(field) {
+    _bubbleSort(sortField) {
         let outer;
         let inner;
-
-        let fieldTer = field === "Age";
+        const tField = sortField === "Age";
 
         for (outer = this.nElems - 1; outer > 0; outer--) {
             for (inner = 0; inner < outer; inner++) {
-                if (fieldTer) {
-                    if (this.data[inner].getAge() > this.data[inner + 1].getAge()) {
-                        let temp = this.data[inner];
-                        this.data[inner] = this.data[inner + 1]
-                        this.data[inner + 1] = temp;
-                    }
-                } else {
-                    if (this.data[inner].getNameInfo(field).localeCompare(this.data[inner + 1].getNameInfo(field)) > 0) {
-                        let temp = this.data[inner];
-                        this.data[inner] = this.data[inner + 1]
-                        this.data[inner + 1] = temp;
-                    }
+                if (tField
+                    ? this.data[inner].getAge() > this.data[inner + 1].getAge()
+                    : this.data[inner].getNameInfo(sortField).localeCompare(this.data[inner + 1].getNameInfo(sortField)) > 0) {
+
+                    let temp = this.data[inner];
+                    this.data[inner] = this.data[inner + 1]
+                    this.data[inner + 1] = temp;
                 }
             }
         }
     }
 
-    _selectSort(field) {
+    _selectSort(sortField) {
         let outer;
         let inner;
         let min;
-
-        let fieldTer = field === "Age";
+        const tField = sortField === "Age";
 
         for (outer = 0; outer < this.nElems - 1; outer++) {
             min = outer;
             for (inner = outer + 1; inner < this.nElems; inner++) {
-                if (fieldTer) {
-                    if (this.data[inner].getAge() < this.data[min].getAge()) {
-                        min = inner;
-                        let temp = this.data[outer];
-                        this.data[outer] = this.data[min];
-                        this.data[min] = temp;
-                    }
-                } else {
-                    if (this.data[inner].getNameInfo(field).localeCompare(this.data[min].getNameInfo(field)) < 0) {
-                        min = inner;
-                        let temp = this.data[outer];
-                        this.data[outer] = this.data[min];
-                        this.data[min] = temp;
-                    }
+                if (tField
+                    ? this.data[inner].getAge() < this.data[min].getAge()
+                    : this.data[inner].getNameInfo(sortField).localeCompare(this.data[min].getNameInfo(sortField)) < 0) {
+
+                    min = inner;
+                    let temp = this.data[outer];
+                    this.data[outer] = this.data[min];
+                    this.data[min] = temp;
                 }
             }
         }
     }
 
-    _insertSort(field) {
+    _insertSort(sortField) {
         let outer;
         let inner;
-
-        let fieldTer = field === "Age";
+        const tField = sortField === "Age";
 
         for (outer = 1; outer < this.nElems; outer++) {
             let temp = this.data[outer]
             inner = outer;
 
-            while (fieldTer
+            while (tField
                 ? inner > 0 && this.data[inner - 1].getAge() >= temp.getAge()
-                : inner > 0 && this.data[inner - 1].getNameInfo(field).localeCompare(temp.getNameInfo(field)) > 0) {
+                : inner > 0 && this.data[inner - 1].getNameInfo(sortField).localeCompare(temp.getNameInfo(sortField)) > 0) {
+
                 this.data[inner] = this.data[inner - 1]
                 --inner;
             }
@@ -120,84 +107,68 @@ class DataSort {
         }
     }
 
-    insert(last, first, a) {
-        this.data[this.nElems] = new Person(last, first, a);
+    sortedData(sortedMethod, sortedField) {
+        switch (sortedMethod) {
+            case "Bubble":
+                this._bubbleSort(sortedField);
+                break;
+            case "Select":
+                this._selectSort(sortedField);
+                break;
+            default:
+            case "Insert":
+                this._insertSort(sortedField);
+                break;
+        }
+    }
+
+    insert(last, first, age) {
+        this.data[this.nElems] = new Person(last, first, age);
         this.nElems++;
     }
 
     display() {
-        const list = [];
         for (let i = 0; i < this.nElems; i++) {
             this.data[i].displayPerson();
         }
     }
 
-    find(field, searchKey) {
+    find(onField, value) {
         let i;
-
-        let fieldTer = field === 'Age';
+        const tField = onField === 'Age';
 
         for (i = 0; i < this.nElems; i++) {
-            if (fieldTer) {
-                if (this.data[i].getAge() == searchKey)
-                    break;
-            } else {
-                if (this.data[i].getNameInfo(field) === searchKey.toLowerCase()) {
-                    break;
-                }
-            }
+            if (tField ? value == this.data[i].getAge() : value.toLowerCase() === this.data[i].getNameInfo(onField)) break;
         }
 
         if (i === this.nElems) {
-            console.log("Can't find " + searchKey);
+            console.log("Can't find " + value);
             return null;
         } else {
-            console.log("Found " + searchKey);
+            console.log("Found " + value);
             return this.data[i];
         }
     }
 
-    delete(field, value) {
+    delete(onField, value) {
         let j;
-
-        let fieldTer = field === 'Age';
+        const tField = onField === 'Age';
 
         for (j = 0; j < this.nElems; j++) {
-            if (fieldTer) {
-                if (value == this.data[j].getAge())
-                    break;
-            } else {
-                if (value === this.data[j].getNameInfo(field))
-                    break;
-            }
+            if (tField ? value == this.data[j].getAge() : value === this.data[j].getNameInfo(onField)) break;
         }
 
         if (j === this.nElems) {
             return false;
         } else {
-            for (let k = j; k < this.nElems; k++)
+            for (let k = j; k < this.nElems; k++) {
                 this.data[k] = this.data[k + 1];
+            }
+
             this.nElems--;
             return true;
         }
-
     }
-
-    sortedData(methodSort, sortedFor) {
-        switch (methodSort) {
-            case "Bubble":
-                this._bubbleSort(sortedFor);
-                break;
-            case "Select":
-                this._selectSort(sortedFor);
-                break;
-            default:
-            case "Insert":
-                this._insertSort(sortedFor);
-                break;
-        }
-    }
-
 }
 
 function DataSortApp() {
@@ -210,7 +181,6 @@ function DataSortApp() {
     arr.insert("Adams", "Henry", 29);
     arr.insert("Stimson", "Brad", 54);
     arr.insert("Vang", "Jose", 72);
-
 
     console.log("Not Sorted")
     arr.display();

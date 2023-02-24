@@ -14,7 +14,7 @@ class Person {
     }
 
     displayPerson() {
-        console.log(`Last Name: ${this.lastName}, First Name: ${this.firstName}, Age: ${this.age}`)
+        console.log(`FIRST NAME: ${this.firstName}, LAST NAME: ${this.lastName}, AGE: ${this.age}`)
     }
 }
 
@@ -27,21 +27,19 @@ class DataArray {
         this.nElems = 0;
     }
 
-    insert(last, first, a){
-        this.data[this.nElems] = new Person(last, first, a);
+    insert(last, first, age) {
+        this.data[this.nElems] = new Person(last, first, age);
         this.nElems++;
     }
 
     find(searchKey) {
         let i;
 
-        for(i = 0; i<this.nElems; i++){
-            if(this.data[i].getLast() === searchKey){
-                break;
-            }
+        for (i = 0; i < this.nElems; i++) {
+            if (this.data[i].getLast() === searchKey) break;
         }
 
-        if(i === this.nElems){
+        if (i === this.nElems) {
             console.log("Can't find " + searchKey);
             return null;
         } else {
@@ -53,32 +51,32 @@ class DataArray {
     delete(value) {
         let j;
 
-        for (j=0; j<this.nElems; j++) {
-            if( value == this.data[j].getLast() )
-            break;
+        for (j = 0; j < this.nElems; j++) {
+            if (value == this.data[j].getLast()) break;
         }
 
-        if(j === this.nElems) {
+        if (j === this.nElems) {
             return false;
         } else {
-            for(let k=j; k<this.nElems; k++)
-            this.data[k] = this.data[k+1];
+            for (let k = j; k < this.nElems; k++) {
+                this.data[k] = this.data[k + 1];
+            }
+
             this.nElems--;
             return true;
         }
-           
+
     }
 
-    display(){
-        const list = [];
-        for(let i = 0; i<this.nElems; i++){
+    display() {        
+        for (let i = 0; i < this.nElems; i++) {
             this.data[i].displayPerson();
         }
     }
 
 }
 
-function DataArrayApp () {
+function DataArrayApp() {
     const maxSize = 100;
     const arr = new DataArray(maxSize);
 
@@ -88,8 +86,6 @@ function DataArrayApp () {
     arr.insert("Adams", "Henry", 29);
     arr.insert("Stimson", "Brad", 54);
     arr.insert("Vang", "Jose", 72);
-
-
     arr.display();
 
     arr.find("Stimson");
@@ -98,7 +94,6 @@ function DataArrayApp () {
 
     arr.delete("Yee");
     arr.delete("Stimson");
-
     arr.display();
 }
 

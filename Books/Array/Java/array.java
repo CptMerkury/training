@@ -1,12 +1,10 @@
 class ArrayApp {
     public static void main(String[] args) {
-
         int maxSize = 100;
         MyArray arr;
         MyArray sorted;
         
         sorted = new MyArray(maxSize);
-
         arr = new MyArray(maxSize);
 
         arr.insert(99);
@@ -18,19 +16,15 @@ class ArrayApp {
         arr.insert(33);
         arr.insert(22);
         arr.insert(11);
-    
         arr.display();
 
         arr.find(26);
         arr.find(99);
         arr.find(66);
 
-        arr.display();
-
         arr.delete(99);
         arr.delete(66);
         arr.delete(0);
-
         arr.display();
 
         int i = 0;
@@ -49,9 +43,7 @@ class ArrayApp {
         for(int j = i - 1; j >= 0; j--) {
             sorted.insert(localSorted[j]);
         }
-
         sorted.display();
-
     }
 }
 

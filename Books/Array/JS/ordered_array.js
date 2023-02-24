@@ -9,32 +9,32 @@ class OrdArray {
 
     insert(value) {
         let j;
-        for (j=0; j<this.nElems; j++) {
-            if (this.a[j] > value) {
-                break;
-            }
+        for (j = 0; j < this.nElems; j++) {
+            if (this.a[j] > value) break;
         }
-        for (let k = this.nElems; k>j; k--) {
-            this.a[k] = this.a[k-1];
+
+        for (let k = this.nElems; k > j; k--) {
+            this.a[k] = this.a[k - 1];
         }
+
         this.a[j] = value;
         this.nElems++;
     }
 
     find(searchKey) {
         let lowerBound = 0;
-        let upperBound = this.nElems-1;
+        let upperBound = this.nElems - 1;
         let curInd;
 
-        while(true) {
+        while (true) {
             curInd = Math.floor((lowerBound + upperBound) / 2);
 
             if (lowerBound > upperBound) {
                 console.log("Can't find " + searchKey);
                 return this.nElems;
-            } 
+            }
 
-            if(this.a[curInd] === searchKey) {
+            if (this.a[curInd] === searchKey) {
                 console.log("Found " + searchKey);
                 return curInd;
             } else {
@@ -53,8 +53,8 @@ class OrdArray {
         if (i === this.nElems) {
             return false
         } else {
-            for(let j=i; j<this.nElems; j++) {
-                this.a[j] = this.a[j+1];
+            for (let j = i; j < this.nElems; j++) {
+                this.a[j] = this.a[j + 1];
             }
             this.nElems--;
         }
@@ -64,17 +64,18 @@ class OrdArray {
         return this.nElems;
     }
 
-    display(){
+    display() {
         const list = [];
-        for(let i = 0; i<this.nElems; i++){
-            list.push(this.a[i]+ "")
+        for (let i = 0; i < this.nElems; i++) {
+            list.push(this.a[i] + "")
         }
+
         console.log(list.join(' '));
     }
 
 }
 
-function OrderedApp () {
+function OrderedApp() {
     const maxSize = 100;
     const arr = new OrdArray(maxSize)
 
@@ -88,7 +89,6 @@ function OrderedApp () {
     arr.insert(22);
     arr.insert(11);
     arr.insert(0);
-
     arr.display();
 
     arr.find(26);
@@ -97,7 +97,6 @@ function OrderedApp () {
 
     arr.delete(55);
     arr.delete(0);
-
     arr.display();
 }
 

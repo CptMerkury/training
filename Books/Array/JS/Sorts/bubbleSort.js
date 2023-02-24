@@ -1,4 +1,4 @@
-class BubbleArray {
+class BubbleSort {
     a;
     nElems;
 
@@ -12,60 +12,6 @@ class BubbleArray {
         this.nElems++;
     }
 
-    find(searchKey) {
-        let lowerBound = 0;
-        let upperBound = this.nElems - 1;
-        let curInd;
-
-        while (true) {
-            curInd = Math.floor((lowerBound + upperBound) / 2);
-
-            if (lowerBound > upperBound) {
-                console.log("Can't find " + searchKey);
-                return this.nElems;
-            }
-
-            if (this.a[curInd] === searchKey) {
-                console.log("Found " + searchKey);
-                return curInd;
-            } else {
-                if (this.a[curInd] < searchKey) {
-                    lowerBound = curInd + 1;
-                } else {
-                    upperBound = curInd - 1;
-                }
-            }
-        }
-    }
-
-    delete(value) {
-        let i = this.find(value);
-
-        if (i === this.nElems) {
-            return false
-        } else {
-            for (let j = i; j < this.nElems; j++) {
-                this.a[j] = this.a[j + 1];
-            }
-            this.nElems--;
-        }
-    }
-
-    bubbleSort() {
-        let out;
-        let inner;
-
-        for (out = this.nElems - 1; out > 0; out--) {
-            for (inner = 0; inner <out; inner++) {
-                if (this.a[inner] > this.a[inner + 1]) {
-                    let temp = this.a[inner];
-                    this.a[inner] = this.a[inner +1]
-                    this.a[inner +1] = temp;
-                }
-            }
-        }
-    }
-
     display() {
         const list = [];
         for (let i = 0; i < this.nElems; i++) {
@@ -74,11 +20,25 @@ class BubbleArray {
         console.log(list.join(' '));
     }
 
+    sort() {
+        let out;
+        let inner;
+
+        for (out = this.nElems - 1; out > 0; out--) {
+            for (inner = 0; inner < out; inner++) {
+                if (this.a[inner] > this.a[inner + 1]) {
+                    const temp = this.a[inner];
+                    this.a[inner] = this.a[inner + 1]
+                    this.a[inner + 1] = temp;
+                }
+            }
+        }
+    }
 }
 
 function BibbleSortApp() {
     const maxSize = 100;
-    const arr = new BubbleArray(maxSize)
+    const arr = new BubbleSort(maxSize)
 
     arr.insert(44);
     arr.insert(88);
@@ -89,11 +49,9 @@ function BibbleSortApp() {
     arr.insert(22);
     arr.insert(77);
     arr.insert(11);
-
     arr.display();
 
     arr.bubbleSort();
-
     arr.display();
 
 }

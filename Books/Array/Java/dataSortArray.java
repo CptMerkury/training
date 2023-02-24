@@ -1,7 +1,5 @@
-
 class DataSortApp {
     public static void main(String[] args) {
-
         int maxSize = 100;
         DataArray arr;
 
@@ -14,14 +12,13 @@ class DataSortApp {
         arr.insert("Stimson", "Brad", 54);
         arr.insert("Vang", "Jose", 72);
 
-        System.out.println("Not Sorted");
+        System.out.println("Before Sort");
         arr.display();
 
         arr.sortedData("Insert", "First Name");
 
-        System.out.println("Sorted");
+        System.out.println("After Sort");
         arr.display();
-
     }
 }
 
@@ -36,11 +33,11 @@ class Person {
         age = a;
     }
 
-    private String getLast() {
+    private String _getLast() {
         return lastName;
     }
 
-    private String getFirst() {
+    private String _getFirst() {
         return firstName;
     }
 
@@ -49,18 +46,18 @@ class Person {
     }
 
     public void displayPerson() {
-        System.out.print("FIRST NAME: " + getFirst());
-        System.out.print(", LAST NAME: " + getLast());
+        System.out.print("FIRST NAME: " + _getFirst());
+        System.out.print(", LAST NAME: " + _getLast());
         System.out.println(", AGE: " + getAge());
     }
 
-    public String getNameInfo(String method) {
-        switch (method) {
+    public String getNameInfo(String field) {
+        switch (field) {
             case "First Name":
-                return getFirst().toLowerCase();
+                return _getFirst().toLowerCase();
             default:
             case "Last Name":
-                return getLast().toLowerCase();
+                return _getLast().toLowerCase();
         }
     }
 }
@@ -74,18 +71,53 @@ class DataArray {
         nElems = 0;
     }
 
-    private void insertSort(String sortedFor) {
+    private void _bubbleSort(String sortField) {
         int in, out;
+        Boolean tField = sortField.equals("Age");
 
-        Boolean sortTer = sortedFor.equals("Age");
+        for (out = nElems - 1; out > 0; out--) {
+            for (in = 0; in < out; in++) {
+                if (tField
+                        ? data[in].getAge() > data[in + 1].getAge()
+                        : data[in].getNameInfo(sortField).compareTo(data[in + 1].getNameInfo(sortField)) > 0) {
+                    Person temp = data[in];
+                    data[in] = data[in + 1];
+                    data[in + 1] = temp;
+                }
+            }
+        }
+    }
+
+    private void _selectSort(String sortField) {
+        int out, in, min;
+        Boolean tField = sortField.equals("Age");
+
+        for (out = 0; out < nElems - 1; out++) {
+            min = out;
+            for (in = out + 1; in < nElems; in++) {
+                if (tField
+                        ? data[in].getAge() < data[min].getAge()
+                        : data[in].getNameInfo(sortField).compareTo(data[min].getNameInfo(sortField)) < 0) {
+                    min = in;
+                    Person temp = data[out];
+                    data[out] = data[min];
+                    data[min] = temp;
+                }
+            }
+        }
+    }
+
+    private void _insertSort(String sortField) {
+        int in, out;
+        Boolean tField = sortField.equals("Age");
 
         for (out = 1; out < nElems; out++) {
             Person temp = data[out];
             in = out;
 
-            while (sortTer
+            while (tField
                     ? in > 0 && data[in - 1].getAge() >= temp.getAge()
-                    : in > 0 && data[in - 1].getNameInfo(sortedFor).compareTo(temp.getNameInfo(sortedFor)) > 0) {
+                    : in > 0 && data[in - 1].getNameInfo(sortField).compareTo(temp.getNameInfo(sortField)) > 0) {
                 data[in] = data[in - 1];
                 --in;
             }
@@ -94,67 +126,17 @@ class DataArray {
         }
     }
 
-    private void bubbleSort(String sortedFor) {
-        int in, out;
-
-        Boolean sortTer = sortedFor.equals("Age");
-
-        for (out = nElems - 1; out > 0; out--) {
-            for (in = 0; in < out; in++) {
-                if (sortTer) {
-                    if (data[in].getAge() > data[in + 1].getAge()) {
-                        Person temp = data[in];
-                        data[in] = data[in + 1];
-                        data[in + 1] = temp;
-                    }
-                } else {
-                    if (data[in].getNameInfo(sortedFor).compareTo(data[in + 1].getNameInfo(sortedFor)) > 0) {
-                        Person temp = data[in];
-                        data[in] = data[in + 1];
-                        data[in + 1] = temp;
-                    }
-                }
-            }
-        }
-    }
-
-    private void selectSort(String sortedFor) {
-        int out, in, min;
-
-        Boolean sortTer = sortedFor.equals("Age");
-
-        for (out = 0; out < nElems - 1; out++) {
-            min = out;
-            for (in = out + 1; in < nElems; in++) {
-                if (sortTer) {
-                    if (data[in].getAge() < data[min].getAge()) {
-                        min = in;
-                        Person temp = data[out];
-                        data[out] = data[min];
-                        data[min] = temp;
-                    }
-                } else {
-                    if (data[in].getNameInfo(sortedFor).compareTo(data[min].getNameInfo(sortedFor)) < 0) {
-                        min = in;
-                        Person temp = data[out];
-                        data[out] = data[min];
-                        data[min] = temp;
-                    }
-                }
-            }
-        }
-    }
-
-    public void sortedData(String methodSort, String sortedFor) {
-        switch (methodSort) {
+    public void sortedData(String sortedMethod, String sortedField) {
+        switch (sortedMethod) {
             case "Bubble":
-                bubbleSort(sortedFor);
+                _bubbleSort(sortedField);
                 break;
             case "Select":
-                selectSort(sortedFor);
+                _selectSort(sortedField);
+                break;
             default:
             case "Insert":
-                insertSort(sortedFor);
+                _insertSort(sortedField);
                 break;
         }
     }
@@ -169,45 +151,43 @@ class DataArray {
             data[j].displayPerson();
     }
 
-    public Person find(String field, String searchName) {
+    public Person find(String onField, String value) {
         int j;
-        Boolean findTer = field.equals("Age");
+        Boolean tField = onField.equals("Age");
 
-        for (j = 0; j < nElems; j++)
-            if (findTer) {
-                if (data[j].getAge() == Integer.parseInt(searchName))
-                    break;
-            } else {
-                if (data[j].getNameInfo(field).equals(searchName.toLowerCase()))
-                    break;
-            }
+        for (j = 0; j < nElems; j++) {
+            if (tField
+                    ? data[j].getAge() == Integer.parseInt(value)
+                    : data[j].getNameInfo(onField).equals(value.toLowerCase()))
+                break;
+        }
+
         if (j == nElems) {
-            System.out.println("Can't find " + searchName);
+            System.out.println("Can't find " + value);
             return null;
         } else {
-            System.out.println("Found " + searchName);
+            System.out.println("Found " + value);
             return data[j];
         }
     }
 
-    public boolean delete(String field, String searchName) {
+    public boolean delete(String onField, String value) {
         int j;
+        Boolean tField = onField.equals("Age");
 
-        Boolean findTer = field.equals("Age");
+        for (j = 0; j < nElems; j++) {
+            if (tField
+                    ? data[j].getAge() == Integer.parseInt(value)
+                    : data[j].getNameInfo(onField).equals(value.toLowerCase()))
+                break;
+        }
 
-        for (j = 0; j < nElems; j++)
-            if (findTer) {
-                if (data[j].getAge() == Integer.parseInt(searchName))
-                    break;
-            } else {
-                if (data[j].getNameInfo(field).equals(searchName.toLowerCase()))
-                    break;
-            }
         if (j == nElems)
             return false;
         else
             for (int k = j; k < nElems; k++)
                 data[k] = data[k + 1];
+
         nElems--;
         return true;
     }

@@ -7,7 +7,7 @@ class MyArray {
         this.nElems = 0;
     }
 
-    insert(value){
+    insert(value) {
         this.a[this.nElems] = value;
         this.nElems++;
     }
@@ -15,13 +15,11 @@ class MyArray {
     find(searchKey) {
         let i;
 
-        for(i = 0; i<this.nElems; i++){
-            if(this.a[i] === searchKey){
-                break;
-            }
+        for (i = 0; i < this.nElems; i++) {
+            if (this.a[i] === searchKey) break;
         }
 
-        if(i === this.nElems){
+        if (i === this.nElems) {
             console.log("Can't find " + searchKey);
             return false;
         } else {
@@ -33,30 +31,32 @@ class MyArray {
     delete(value) {
         let j;
 
-        for (j=0; j<this.nElems; j++) {
-            if( value == this.a[j] )
-            break;
+        for (j = 0; j < this.nElems; j++) {
+            if (value == this.a[j]) break;
         }
 
-        if(j === this.nElems) {
+        if (j === this.nElems) {
             return false;
         } else {
-            for(let k=j; k<this.nElems; k++)
-            this.a[k] = this.a[k+1];
+            for (let k = j; k < this.nElems; k++) {
+                this.a[k] = this.a[k + 1];
+            }
+
             this.nElems--;
             return true;
         }
     }
 
-    removeMax(){
+    removeMax() {
         let max = 0;
 
-        if(this.nElems > 0) {
-            for(let i = 0; i<this.nElems; i++) {
-                if(this.a[i] > max) {
+        if (this.nElems > 0) {
+            for (let i = 0; i < this.nElems; i++) {
+                if (this.a[i] > max) {
                     max = this.a[i];
                 }
             }
+
             console.log("Remove max value " + max)
             this.delete(max)
             return max;
@@ -64,20 +64,20 @@ class MyArray {
             console.log("Array is empty")
             return -1;
         }
-       
+
     }
 
-    display(){
+    display() {
         const list = [];
-        for(let i = 0; i<this.nElems; i++){
-            list.push(this.a[i]+ "")
+        for (let i = 0; i < this.nElems; i++) {
+            list.push(this.a[i] + "")
         }
         console.log(list.join(' '));
     }
 
 }
 
-function App () {
+function App() {
     const maxSize = 100;
     const arr = new MyArray(maxSize);
     const sorted = new MyArray(maxSize);
@@ -91,7 +91,6 @@ function App () {
     arr.insert(33);
     arr.insert(22);
     arr.insert(11);
-
     arr.display();
 
     arr.find(26);
@@ -101,15 +100,14 @@ function App () {
     arr.delete(99);
     arr.delete(66);
     arr.delete(00);
-
     arr.display();
 
     let i = 0;
     let localArray = [];
 
-    while(true) {
+    while (true) {
         let maxValue = arr.removeMax();
-        if(maxValue !== -1) {
+        if (maxValue !== -1) {
             localArray.push(maxValue);
             i++;
         } else {
@@ -117,12 +115,11 @@ function App () {
         }
     }
 
-    for(let j = localArray.length - 1; j >= 0; j--) {
+    for (let j = localArray.length - 1; j >= 0; j--) {
         sorted.insert(localArray[j])
     }
 
     sorted.display();
-    
 }
 
 App();

@@ -1,10 +1,9 @@
 class BubbleSortApp {
     public static void main(String[] args) {
-
         int maxSize = 100;
-        BubbleSortArray arr;
+        BubbleSort arr;
 
-        arr = new BubbleSortArray(maxSize);
+        arr = new BubbleSort(maxSize);
 
         arr.insert(44);
         arr.insert(88);
@@ -15,21 +14,18 @@ class BubbleSortApp {
         arr.insert(22);
         arr.insert(77);
         arr.insert(11);
-
         arr.display();
 
-        arr.bubbleSort();
-
+        arr.sort();
         arr.display();
-
     }
 }
 
-class BubbleSortArray {
+class BubbleSort {
     private long[] a;
     private int nElems;
 
-    public BubbleSortArray(int max) {
+    public BubbleSort(int max) {
         a = new long[max];
         nElems = 0;
     }
@@ -39,44 +35,13 @@ class BubbleSortArray {
         nElems++;
     }
 
-    public int find(long searchKey) {
-        int lowerBound = 0;
-        int upperBound = nElems - 1;
-        int curInd;
-
-        while (true) {
-            curInd = (lowerBound + upperBound) / 2;
-
-            if (a[curInd] == searchKey) {
-                System.out.println("Found " + searchKey);
-                return curInd;
-            } else if (lowerBound > upperBound) {
-                System.out.println("Can't find " + searchKey);
-                return nElems;
-            } else {
-                if (a[curInd] < searchKey) {
-                    lowerBound = curInd + 1;
-                } else {
-                    upperBound = curInd - 1;
-                }
-            }
-        }
+    public void display() {
+        for (int j = 0; j < nElems; j++)
+            System.out.print(a[j] + " ");
+        System.out.println("");
     }
 
-    public boolean delete(long value) {
-        int j = find(value);
-        if (j == nElems) {
-            return false;
-        } else {
-            for (int k = j; k < nElems; k++) {
-                a[k] = a[k + 1];
-            }
-            nElems--;
-            return true;
-        }
-    }
-
-    public void bubbleSort() {
+    public void sort() {
         int out, in;
         for (out = nElems - 1; out > 0; out--) {
             for (in = 0; in < out; in++) {
@@ -87,11 +52,5 @@ class BubbleSortArray {
                 }
             }
         }
-    }
-
-    public void display() {
-        for (int j = 0; j < nElems; j++)
-            System.out.print(a[j] + " ");
-        System.out.println("");
     }
 };
