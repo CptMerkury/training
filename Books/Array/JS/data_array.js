@@ -1,76 +1,76 @@
 class Person {
-    lastName;
-    firstName;
-    age;
+    #nElems;
+    #firstName;
+    #age;
 
     constructor(last, first, a) {
-        this.lastName = last;
-        this.firstName = first;
-        this.age = a;
+        this.#nElems = last;
+        this.#firstName = first;
+        this.#age = a;
     }
 
     getLast() {
-        return this.lastName;
+        return this.#nElems;
     }
 
     displayPerson() {
-        console.log(`FIRST NAME: ${this.firstName}, LAST NAME: ${this.lastName}, AGE: ${this.age}`)
+        console.log(`FIRST NAME: ${this.#firstName}, LAST NAME: ${this.#nElems}, AGE: ${this.#age}`)
     }
 }
 
 class DataArray {
-    data;
-    nElems;
+    #data;
+    #nElems;
 
     constructor(size) {
-        this.data = new Person(size);
-        this.nElems = 0;
+        this.#data = new Person(size);
+        this.#nElems = 0;
     }
 
     insert(last, first, age) {
-        this.data[this.nElems] = new Person(last, first, age);
-        this.nElems++;
+        this.#data[this.#nElems] = new Person(last, first, age);
+        this.#nElems++;
     }
 
     find(searchKey) {
         let i;
 
-        for (i = 0; i < this.nElems; i++) {
-            if (this.data[i].getLast() === searchKey) break;
+        for (i = 0; i < this.#nElems; i++) {
+            if (this.#data[i].getLast() === searchKey) break;
         }
 
-        if (i === this.nElems) {
+        if (i === this.#nElems) {
             console.log("Can't find " + searchKey);
             return null;
         } else {
             console.log("Found " + searchKey);
-            return this.data[i];
+            return this.#data[i];
         }
     }
 
     delete(value) {
         let j;
 
-        for (j = 0; j < this.nElems; j++) {
-            if (value == this.data[j].getLast()) break;
+        for (j = 0; j < this.#nElems; j++) {
+            if (value == this.#data[j].getLast()) break;
         }
 
-        if (j === this.nElems) {
+        if (j === this.#nElems) {
             return false;
         } else {
-            for (let k = j; k < this.nElems; k++) {
-                this.data[k] = this.data[k + 1];
+            for (let k = j; k < this.#nElems; k++) {
+                this.#data[k] = this.#data[k + 1];
             }
 
-            this.nElems--;
+            this.#nElems--;
             return true;
         }
 
     }
 
     display() {        
-        for (let i = 0; i < this.nElems; i++) {
-            this.data[i].displayPerson();
+        for (let i = 0; i < this.#nElems; i++) {
+            this.#data[i].displayPerson();
         }
     }
 

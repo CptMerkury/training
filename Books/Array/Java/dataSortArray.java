@@ -71,7 +71,7 @@ class DataArray {
         nElems = 0;
     }
 
-    private void _bubbleSort(String sortField) {
+    private void bubbleSort(String sortField) {
         int in, out;
         Boolean tField = sortField.equals("Age");
 
@@ -88,7 +88,7 @@ class DataArray {
         }
     }
 
-    private void _selectSort(String sortField) {
+    private void selectSort(String sortField) {
         int out, in, min;
         Boolean tField = sortField.equals("Age");
 
@@ -107,7 +107,7 @@ class DataArray {
         }
     }
 
-    private void _insertSort(String sortField) {
+    private void insertSort(String sortField) {
         int in, out;
         Boolean tField = sortField.equals("Age");
 
@@ -129,14 +129,14 @@ class DataArray {
     public void sortedData(String sortedMethod, String sortedField) {
         switch (sortedMethod) {
             case "Bubble":
-                _bubbleSort(sortedField);
+                bubbleSort(sortedField);
                 break;
             case "Select":
-                _selectSort(sortedField);
+                selectSort(sortedField);
                 break;
             default:
             case "Insert":
-                _insertSort(sortedField);
+                insertSort(sortedField);
                 break;
         }
     }

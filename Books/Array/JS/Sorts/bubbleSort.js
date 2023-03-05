@@ -1,21 +1,21 @@
 class BubbleSort {
-    a;
-    nElems;
+    #a;
+    #nElems;
 
     constructor(size) {
-        this.a = new Array(size);
-        this.nElems = 0;
+        this.#a = new Array(size);
+        this.#nElems = 0;
     }
 
     insert(value) {
-        this.a[this.nElems] = value;
-        this.nElems++;
+        this.#a[this.#nElems] = value;
+        this.#nElems++;
     }
 
     display() {
         const list = [];
-        for (let i = 0; i < this.nElems; i++) {
-            list.push(this.a[i] + "")
+        for (let i = 0; i < this.#nElems; i++) {
+            list.push(this.#a[i] + "")
         }
         console.log(list.join(' '));
     }
@@ -24,12 +24,12 @@ class BubbleSort {
         let out;
         let inner;
 
-        for (out = this.nElems - 1; out > 0; out--) {
+        for (out = this.#nElems - 1; out > 0; out--) {
             for (inner = 0; inner < out; inner++) {
-                if (this.a[inner] > this.a[inner + 1]) {
-                    const temp = this.a[inner];
-                    this.a[inner] = this.a[inner + 1]
-                    this.a[inner + 1] = temp;
+                if (this.#a[inner] > this.#a[inner + 1]) {
+                    const temp = this.#a[inner];
+                    this.#a[inner] = this.#a[inner + 1]
+                    this.#a[inner + 1] = temp;
                 }
             }
         }
@@ -51,7 +51,7 @@ function BibbleSortApp() {
     arr.insert(11);
     arr.display();
 
-    arr.bubbleSort();
+    arr.sort();
     arr.display();
 
 }

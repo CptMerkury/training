@@ -1,21 +1,21 @@
 class SelectSort {
-    a;
-    nElems;
+    #a;
+    #nElems;
 
     constructor(size) {
-        this.a = new Array(size);
-        this.nElems = 0;
+        this.#a = new Array(size);
+        this.#nElems = 0;
     }
 
     insert(value) {
-        this.a[this.nElems] = value;
-        this.nElems++;
+        this.#a[this.#nElems] = value;
+        this.#nElems++;
     }
 
     display() {
         const list = [];
-        for (let i = 0; i < this.nElems; i++) {
-            list.push(this.a[i] + "")
+        for (let i = 0; i < this.#nElems; i++) {
+            list.push(this.#a[i] + "")
         }
         console.log(list.join(' '));
     }
@@ -25,15 +25,15 @@ class SelectSort {
         let inner;
         let min;
 
-        for (out = 0; out < this.nElems - 1; out++) {
+        for (out = 0; out < this.#nElems - 1; out++) {
             min = out;
-            for (inner = out + 1; inner < this.nElems; inner++) {
-                if (this.a[inner] < this.a[min]) {
+            for (inner = out + 1; inner < this.#nElems; inner++) {
+                if (this.#a[inner] < this.#a[min]) {
                     min = inner;
 
-                    const temp = this.a[out];
-                    this.a[out] = this.a[min];
-                    this.a[min] = temp;
+                    const temp = this.#a[out];
+                    this.#a[out] = this.#a[min];
+                    this.#a[min] = temp;
                 }
             }
         }

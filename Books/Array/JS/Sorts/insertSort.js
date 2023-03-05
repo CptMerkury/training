@@ -1,21 +1,21 @@
 class InsertSort {
-    a;
-    nElems;
+    #a;
+    #nElems;
 
     constructor(size) {
-        this.a = new Array(size);
-        this.nElems = 0;
+        this.#a = new Array(size);
+        this.#nElems = 0;
     }
 
     insert(value) {
-        this.a[this.nElems] = value;
-        this.nElems++;
+        this.#a[this.#nElems] = value;
+        this.#nElems++;
     }
 
     display() {
         const list = [];
-        for (let i = 0; i < this.nElems; i++) {
-            list.push(this.a[i] + "")
+        for (let i = 0; i < this.#nElems; i++) {
+            list.push(this.#a[i] + "")
         }
         console.log(list.join(' '));
     }
@@ -24,16 +24,16 @@ class InsertSort {
         let inner;
         let outer;
 
-        for (outer = 1; outer < this.nElems; outer++) {
-            const temp = this.a[outer];
+        for (outer = 1; outer < this.#nElems; outer++) {
+            const temp = this.#a[outer];
             inner = outer;
 
-            while (inner > 0 && this.a[inner - 1] >= temp) {
-                this.a[inner] = this.a[inner - 1]
+            while (inner > 0 && this.#a[inner - 1] >= temp) {
+                this.#a[inner] = this.#a[inner - 1]
                 --inner;
             }
             
-            this.a[inner] = temp;
+            this.#a[inner] = temp;
         }
     }
 }
@@ -53,7 +53,7 @@ function InsertSortApp() {
     arr.insert(11);
     arr.display();
 
-    arr.insertSort();
+    arr.sort();
     arr.display();
 
 }

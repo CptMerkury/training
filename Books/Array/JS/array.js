@@ -1,25 +1,25 @@
 class MyArray {
-    a;
-    nElems;
+    #a;
+    #nElems;
 
     constructor(size) {
-        this.a = new Array(size);
-        this.nElems = 0;
+        this.#a = new Array(size);
+        this.#nElems = 0;
     }
 
     insert(value) {
-        this.a[this.nElems] = value;
-        this.nElems++;
+        this.#a[this.#nElems] = value;
+        this.#nElems++;
     }
 
     find(searchKey) {
         let i;
 
-        for (i = 0; i < this.nElems; i++) {
-            if (this.a[i] === searchKey) break;
+        for (i = 0; i < this.#nElems; i++) {
+            if (this.#a[i] === searchKey) break;
         }
 
-        if (i === this.nElems) {
+        if (i === this.#nElems) {
             console.log("Can't find " + searchKey);
             return false;
         } else {
@@ -31,18 +31,18 @@ class MyArray {
     delete(value) {
         let j;
 
-        for (j = 0; j < this.nElems; j++) {
-            if (value == this.a[j]) break;
+        for (j = 0; j < this.#nElems; j++) {
+            if (value == this.#a[j]) break;
         }
 
-        if (j === this.nElems) {
+        if (j === this.#nElems) {
             return false;
         } else {
-            for (let k = j; k < this.nElems; k++) {
-                this.a[k] = this.a[k + 1];
+            for (let k = j; k < this.#nElems; k++) {
+                this.#a[k] = this.#a[k + 1];
             }
 
-            this.nElems--;
+            this.#nElems--;
             return true;
         }
     }
@@ -50,10 +50,10 @@ class MyArray {
     removeMax() {
         let max = 0;
 
-        if (this.nElems > 0) {
-            for (let i = 0; i < this.nElems; i++) {
-                if (this.a[i] > max) {
-                    max = this.a[i];
+        if (this.#nElems > 0) {
+            for (let i = 0; i < this.#nElems; i++) {
+                if (this.#a[i] > max) {
+                    max = this.#a[i];
                 }
             }
 
@@ -69,8 +69,8 @@ class MyArray {
 
     display() {
         const list = [];
-        for (let i = 0; i < this.nElems; i++) {
-            list.push(this.a[i] + "")
+        for (let i = 0; i < this.#nElems; i++) {
+            list.push(this.#a[i] + "")
         }
         console.log(list.join(' '));
     }
