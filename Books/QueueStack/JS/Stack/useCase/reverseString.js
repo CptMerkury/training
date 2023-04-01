@@ -23,16 +23,8 @@ class StackX {
         return this.#stackArray[this.#top--];
     }
 
-    peek() {
-        return !this.isEmpty() ? this.#stackArray[this.#top] : "0";
-    }
-
     isEmpty() {
         return this.#top === -1;
-    }
-
-    isFull() {
-        return this.#top === this.#maxSize - 1;
     }
 }
 

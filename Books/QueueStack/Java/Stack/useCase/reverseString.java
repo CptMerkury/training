@@ -1,3 +1,5 @@
+package useCase;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -45,31 +47,15 @@ class StackCh {
     }
 
     public void push(char val) {
-        if (!isFull()) {
-            stackArray[++top] = val;
-        } else {
-            System.out.println("Can't insert, stack is full");
-        }
+        stackArray[++top] = val;
     }
 
     public char pop() {
         return stackArray[top--];
     }
 
-    public char peek() {
-        if (!isEmpty()) {
-            return stackArray[top];
-        } else {
-            return '0';
-        }
-    }
-
     public boolean isEmpty() {
         return (top == -1);
-    }
-
-    public boolean isFull() {
-        return (top == maxSize - 1);
     }
 }
 
