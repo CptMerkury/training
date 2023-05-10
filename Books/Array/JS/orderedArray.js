@@ -79,7 +79,7 @@ class OrdArray {
 
 }
 
-function OrderedApp() {
+(function OrderedApp() {
     const maxSize = 100;
     const arr = new OrdArray(maxSize)
 
@@ -105,6 +105,4 @@ function OrderedApp() {
     arr.delete(55);
     arr.delete(0);
     arr.display();
-}
-
-OrderedApp();
+})();

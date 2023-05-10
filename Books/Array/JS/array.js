@@ -77,7 +77,7 @@ class MyArray {
 
 }
 
-function App() {
+(function App() {
     const maxSize = 100;
     const arr = new MyArray(maxSize);
     const sorted = new MyArray(maxSize);
@@ -99,7 +99,7 @@ function App() {
 
     arr.delete(99);
     arr.delete(66);
-    arr.delete(00);
+    arr.delete(0o0);
     arr.display();
 
     let i = 0;
@@ -120,6 +120,4 @@ function App() {
     }
 
     sorted.display();
-}
-
-App();
+})();
