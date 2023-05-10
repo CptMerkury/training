@@ -68,7 +68,7 @@ class DataArray {
 
     }
 
-    display() {        
+    display() {
         for (let i = 0; i < this.#nElems; i++) {
             this.#data[i].displayPerson();
         }
@@ -76,7 +76,7 @@ class DataArray {
 
 }
 
-function DataArrayApp() {
+(function DataArrayApp() {
     const maxSize = 100;
     const arr = new DataArray(maxSize);
 
@@ -95,6 +95,4 @@ function DataArrayApp() {
     arr.delete("Yee");
     arr.delete("Stimson");
     arr.display();
-}
-
-DataArrayApp();
+})();

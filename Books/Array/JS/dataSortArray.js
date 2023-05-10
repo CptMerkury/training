@@ -171,7 +171,7 @@ class DataSort {
     }
 }
 
-function DataSortApp() {
+(function DataSortApp() {
     const maxSize = 100;
     const arr = new DataSort(maxSize);
 
@@ -189,6 +189,4 @@ function DataSortApp() {
 
     console.log("Sorted")
     arr.display();
-}
-
-DataSortApp();
+})();
