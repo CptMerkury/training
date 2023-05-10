@@ -1,9 +1,11 @@
-class BubbleSortApp {
+package Books.Sorts.Java;
+
+class SelectSortApp {
     public static void main(String[] args) {
         int maxSize = 100;
-        BubbleSort arr;
+        SelectSort arr;
 
-        arr = new BubbleSort(maxSize);
+        arr = new SelectSort(maxSize);
 
         arr.insert(44);
         arr.insert(88);
@@ -18,14 +20,15 @@ class BubbleSortApp {
 
         arr.sort();
         arr.display();
+
     }
 }
 
-class BubbleSort {
+class SelectSort {
     private long[] a;
     private int nElems;
 
-    public BubbleSort(int max) {
+    public SelectSort(int max) {
         a = new long[max];
         nElems = 0;
     }
@@ -42,13 +45,15 @@ class BubbleSort {
     }
 
     public void sort() {
-        int out, in;
-        for (out = nElems - 1; out > 0; out--) {
-            for (in = 0; in < out; in++) {
-                if (a[in] > a[in + 1]) {
-                    long temp = a[in];
-                    a[in] = a[in + 1];
-                    a[in + 1] = temp;
+        int out, in, min;
+        for (out = 0; out < nElems - 1; out++) {
+            min = out;
+            for (in = out + 1; in < nElems; in++) {
+                if(a[in] < a[min]) {
+                    min = in;
+                    long temp = a[out];
+                    a[out] = a[min];
+                    a[min] = temp;
                 }
             }
         }

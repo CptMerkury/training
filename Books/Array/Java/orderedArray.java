@@ -14,7 +14,7 @@ class OrderedApp {
         arr.insert(33);
         arr.insert(22);
         arr.insert(11);
-        arr.insert(00);
+        arr.insert(0);
         arr.display();
 
         arr.find(26);
@@ -22,7 +22,7 @@ class OrderedApp {
         arr.find(66);
 
         arr.delete(55);
-        arr.delete(00);
+        arr.delete(0);
         arr.display();
     }
 }
@@ -55,18 +55,13 @@ class OrdArray {
     public int find(long searchKey) {
         int lowerBound = 0;
         int upperBound = nElems - 1;
-        int curInd;
 
-        while (true) {
-            curInd = (lowerBound + upperBound) / 2;
+        while (lowerBound < upperBound) {
+            int curInd = (lowerBound + upperBound) / 2;
 
             if (a[curInd] == searchKey) {
                 System.out.println("Found " + searchKey);
                 return curInd;
-
-            } else if (lowerBound > upperBound) {
-                System.out.println("Can't find " + searchKey);
-                return nElems;
 
             } else {
                 if (a[curInd] < searchKey)
@@ -75,6 +70,9 @@ class OrdArray {
                     upperBound = curInd - 1;
             }
         }
+
+        System.out.println("Can't find " + searchKey);
+        return nElems;
     }
 
     public boolean delete(long value) {

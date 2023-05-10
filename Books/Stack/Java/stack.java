@@ -1,3 +1,5 @@
+package Books.Stack.Java;
+
 class ArrayApp {
     public static void main(String[] args) {
         StackX stack = new StackX(10);
