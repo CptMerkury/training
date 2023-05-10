@@ -1,11 +1,11 @@
-package Books.Sorts.Java;
+package Books.BaseSort.Java;
 
-class SelectSortApp {
+class InsertSortApp {
     public static void main(String[] args) {
         int maxSize = 100;
-        SelectSort arr;
+        InsertSort arr;
 
-        arr = new SelectSort(maxSize);
+        arr = new InsertSort(maxSize);
 
         arr.insert(44);
         arr.insert(88);
@@ -24,11 +24,11 @@ class SelectSortApp {
     }
 }
 
-class SelectSort {
+class InsertSort {
     private long[] a;
     private int nElems;
 
-    public SelectSort(int max) {
+    public InsertSort(int max) {
         a = new long[max];
         nElems = 0;
     }
@@ -45,17 +45,18 @@ class SelectSort {
     }
 
     public void sort() {
-        int out, in, min;
-        for (out = 0; out < nElems - 1; out++) {
-            min = out;
-            for (in = out + 1; in < nElems; in++) {
-                if(a[in] < a[min]) {
-                    min = in;
-                    long temp = a[out];
-                    a[out] = a[min];
-                    a[min] = temp;
-                }
+        int in, out;
+
+        for (out = 1; out < nElems; out++) {
+            long temp = a[out];
+            in = out;
+
+            while(in > 0 && a[in-1] >= temp) {
+                a[in] = a[in-1];
+                --in;
             }
+            a[in] = temp;
         }
+        
     }
 };
