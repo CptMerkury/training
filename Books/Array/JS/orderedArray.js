@@ -22,29 +22,33 @@ class OrdArray {
     }
 
     find(searchKey) {
-        let lowerBound = 0;
-        let upperBound = this.#nElems - 1;
-        let curInd;
+        let lowerBound = 0
+        let upperBound = this.#nElems;
 
-        while (true) {
-            curInd = Math.floor((lowerBound + upperBound) / 2);
+        let res = -1;
 
-            if (lowerBound > upperBound) {
-                console.log("Can't find " + searchKey);
-                return this.#nElems;
+        while (lowerBound < upperBound) {
+            const idx = Math.floor((lowerBound + upperBound) / 2)
+            const mid = this.#a[idx];
+
+            if (mid === searchKey) {
+                res = idx;
             }
 
-            if (this.#a[curInd] === searchKey) {
-                console.log("Found " + searchKey);
-                return curInd;
+            if (mid >= searchKey) {
+                upperBound = idx;
             } else {
-                if (this.#a[curInd] < searchKey) {
-                    lowerBound = curInd + 1;
-                } else {
-                    upperBound = curInd - 1;
-                }
+                lowerBound = idx + 1;
             }
         }
+
+        if (res === -1) {
+            console.log(`Element ${searchKey} not found`)
+            return res;
+        }
+
+        console.log(`Find element ${searchKey} on index: ${res}`)
+        return res;
     }
 
     delete(value) {
@@ -84,6 +88,8 @@ function OrderedApp() {
     arr.insert(77);
     arr.insert(66);
     arr.insert(55);
+    arr.insert(55);
+    arr.insert(55);
     arr.insert(44);
     arr.insert(33);
     arr.insert(22);
@@ -94,6 +100,7 @@ function OrderedApp() {
     arr.find(26);
     arr.find(99);
     arr.find(66);
+    arr.find(55);
 
     arr.delete(55);
     arr.delete(0);
