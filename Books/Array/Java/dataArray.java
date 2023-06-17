@@ -20,7 +20,6 @@ class DataApp {
         arr.delete("Yee");
         arr.delete("Stimson");
         arr.display();
-
     }
 }
 
