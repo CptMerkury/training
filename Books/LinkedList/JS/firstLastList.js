@@ -42,8 +42,8 @@ class FirstLastList {
             this.#first = node;
         } else {
             this.#last.next = node;
-            this.#last = node;
         }
+        this.#last = node;
     }
 
     deleteFirst() {
@@ -80,6 +80,7 @@ class FirstLastList {
 
     theList.displayList();
 
+    theList.deleteFirst();
     theList.deleteFirst();
     theList.deleteFirst();
 

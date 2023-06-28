@@ -1,23 +1,28 @@
-package Books.LinkedList.Java;
+package Books.Queues.QueueList.Java;
 
-class FirstLastListApp {
+class QueueListApp {
     public static void main(String[] args) {
-        FirstLastList theList = new FirstLastList();
 
-        theList.insertFirst(22);
-        theList.insertFirst(44);
-        theList.insertFirst(66);
+        QueueList theQueueList = new QueueList();
 
-        theList.insertLast(11);
-        theList.insertLast(33);
-        theList.insertLast(55);
+        theQueueList.push(10);
+        theQueueList.push(20);
+        theQueueList.push(30);
 
-        theList.displayList();
+        theQueueList.displayQueue();
 
-        theList.deleteFirst();
-        theList.deleteFirst();
+        theQueueList.push(40);
+        theQueueList.push(50);
+        theQueueList.push(60);
 
-        theList.displayList();
+        theQueueList.displayQueue();
+
+        theQueueList.pop();
+        theQueueList.pop();
+        theQueueList.pop();
+        theQueueList.pop();
+
+        theQueueList.displayQueue();
     }
 }
 
@@ -34,11 +39,11 @@ class Link {
     }
 }
 
-class FirstLastList {
+class LinkedList {
     private Link first;
     private Link last;
 
-    public FirstLastList() {
+    public LinkedList() {
         first = null;
         last = null;
     }
@@ -46,17 +51,7 @@ class FirstLastList {
     public boolean isEmpty() {
         return first == null;
     }
-
-    public void insertFirst(long data) {
-        Link newLink = new Link(data);
-
-        if(isEmpty()) {
-            last = newLink;
-        }
-        newLink.next = first;
-        first = newLink;
-    }
-
+    
     public void insertLast(long data) {
         Link newLink = new Link(data);
 
@@ -70,7 +65,7 @@ class FirstLastList {
 
     public long deleteFirst() {
         long temp = first.dData;
-        if (first == null) {
+        if (isEmpty()) {
             last = null;
         }
         first = first.next;
@@ -87,5 +82,30 @@ class FirstLastList {
         }
 
         System.out.println("");
+    }
+}
+
+class QueueList {
+    private LinkedList theQueue;
+
+    public QueueList() {
+        theQueue = new LinkedList();
+    }
+
+    public void push(long data) {
+        theQueue.insertLast(data);
+    }
+
+    public long pop() {
+        return theQueue.deleteFirst();
+    }
+
+    public boolean isEmpty() {
+        return theQueue.isEmpty();
+    }
+
+    public void displayQueue() {
+        System.out.print("Queue (start -> end): ");
+        theQueue.displayList();
     }
 }
