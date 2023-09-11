@@ -128,8 +128,13 @@ class ListIterator {
     const theList = new LinkedList();
     const theIter = new ListIterator(theList)
     let currentValue;
+    
+    theIter.insertAfter(20);
+    theIter.insertAfter(40);
+    theIter.insertAfter(80);
+    theIter.insertBefore(60);
 
-    function ConsoleCommand() {
+    (function ConsoleCommand() {
         rl.question("Enter the first letter of:\n show, current, reset, next, before, after, delete \n", str => {
             if (str === "") {
                 console.log("Exit...")
@@ -190,6 +195,5 @@ class ListIterator {
                 ConsoleCommand()
             }
         })
-    }
-    ConsoleCommand()
+    })()
 })()
