@@ -1,4 +1,4 @@
-package Books.Queues.Queue.Java;
+package Books.Queues.Java.Queue;
 
 class QueueApp {
     public static void main(String[] args) {
@@ -34,14 +34,12 @@ class MyQueue {
     private long[] queArray;
     private int front;
     private int rear;
-    private int nItems;
 
     public MyQueue(int s) {
-        maxSize = s;
+        maxSize = s + 1;
         queArray = new long[maxSize];
         front = 0;
         rear = -1;
-        nItems = 0;
     }
 
     public void insert(long val) {
@@ -54,7 +52,6 @@ class MyQueue {
             rear = -1;
 
         queArray[++rear] = val;
-        nItems++;
     }
 
     public long remove() {
@@ -66,8 +63,7 @@ class MyQueue {
 
             if (front == maxSize)
                 front = 0;
-    
-            nItems--;
+
             return temp;
         }
     }
@@ -77,14 +73,18 @@ class MyQueue {
     }
 
     public boolean isEmpty() {
-        return nItems == 0;
+        return (rear + 1 == front || (front + maxSize - 1 == rear));
     }
 
     public boolean isFull() {
-        return nItems == maxSize;
+        return (rear + 2 == front || (front + maxSize - 2 == rear));
     }
 
     public int size() {
-        return nItems;
+        if (rear >= front) {
+            return rear - front + 1;
+        } else {
+            return (maxSize - front) + (rear + 1);
+        }
     }
 }
