@@ -78,3 +78,23 @@ list.remove();
 console.log('Tail', list.tail.value) // 3
 console.log('Head next', list.head.next.value) // 1
 console.log('Head next prev value', list.head.next.prev.value) // 2
+
+list.addRight(10)
+list.addRight(11)
+list.addRight(12)
+for (const value of list) {
+  console.log(value);
+}
+
+
+const jackBlack = Structure([
+  ['name', 'utf16', 10], // Число - это максимальное количество символов
+  ['lastName', 'utf16', 10],
+  ['age', 'u16'] // uint16
+]);
+
+jackBlack.set('name', 'Jack');
+jackBlack.set('lastName', 'Black');
+jackBlack.set('age', 53);
+
+console.log(jackBlack.get('name')); // 'Jack'
