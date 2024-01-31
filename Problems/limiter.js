@@ -1,6 +1,8 @@
-const requestsIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const requests1 = [1,2,3,4,5,6,7,8,9,10]
+const requests2 = []
+const requests3 = [1]
+const requests4 = [1,2,3,4,5]
 
-const LIMIT = 5;
 const analytics = [];
 const sleep = (delay) => new Promise( async (resolve) => {
   setTimeout(() => {
@@ -8,6 +10,7 @@ const sleep = (delay) => new Promise( async (resolve) => {
   }, delay)
 })
 
+/* Some example request function */
 async function request(id) {
   return new Promise((resolve, reject) => {
     if (id % 2 === 0) {
@@ -29,9 +32,10 @@ function* limiter(req, limit) {
       })
 
     if (((i + 1) % limit) === 0) {
-      yield req[i];
+      yield 'Wait...';
     }
   }
+  yield 'Done...';
 }
 
 async function awaiter(requests, limit) {
@@ -40,11 +44,13 @@ async function awaiter(requests, limit) {
   for (let res of results) {
     console.log('Waiting...')
     await sleep(3000)
-
   }
 }
 
-awaiter(requestsIds, LIMIT).then(() => console.log(analytics));
+awaiter(requests1, 2).then(() => console.log(analytics));
+awaiter(requests2, 5).then(() => console.log(analytics));
+awaiter(requests3, 10).then(() => console.log(analytics));
+awaiter(requests4, 6).then(() => console.log(analytics));
 
 
 
