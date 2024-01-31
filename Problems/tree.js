@@ -7,7 +7,11 @@ const obj = {
 
     {
       value: 'bla',
-      children: [{value: 'baz'}]
+      children: [
+        {
+          value: 'baz'
+        }
+      ]
     }
   ]
 };
