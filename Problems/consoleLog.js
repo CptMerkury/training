@@ -30,8 +30,29 @@ val.then(console.log);//7
 var val = Promise.resolve(1);
 var arr = [1, 2, 3];
 for (var i = 0; i < arr.length; ++i) {
-  (function(i){
+  (function (i) {
     val = val.then((val) => val + arr[i]);
   })(i)
 }
 val.then(console.log);//7
+
+
+//Day 3
+console.log('foo');
+
+setTimeout(() => {
+  console.log('bar');
+}, 0);
+
+queueMicrotask(() => {
+  console.log('baz');
+  Promise.resolve().then().then(() => console.log('ban'));
+});
+
+new Promise((resolve) => {
+  console.log('bla');
+  resolve('baf');
+}).then(console.log);
+
+console.log('bak');
+// foo, bla, bak, baz, baf, ban, bar
