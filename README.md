@@ -1,55 +1,47 @@
-# It's my study repo, where i collect my developers goal
-## Maybe someone find here something interesting
+<h2>
+It's my study repo, where i collect my developers goal
+Maybe someone find here something interesting
+</h2>
 
-### Structure:
-- Books </br>
-- Intensive </br>
-- Practice </br>
-- Resolved Problem </br>
+## Structure repo:
+- `Books`
+- `Intensive`
+- `Practice`
+- `Resolved Problem`
 
-# Books
-### `Data Structures and Algorithms in Java`
-- ##### [Data Structures description](https://en.wikipedia.org/wiki/Data_structure)
+## `Books`
+- Data Structures and Algorithms in Java - [DS wiki](https://en.wikipedia.org/wiki/Data_structure)
 
-</hr>
+## `Intensive`
 
-# Intensive
-### `Architecture` </br>
-- ##### [Architecture description](https://en.wikipedia.org/wiki/Software_architecture)
+- [Architecture](https://en.wikipedia.org/wiki/Software_architecture)
 
-### `Command Line` </br>
-- ##### [Command Line description](https://en.wikipedia.org/wiki/Command-line_interface)
+- [Command Line](https://en.wikipedia.org/wiki/Command-line_interface)
 
-### `Compilation Parsers` </br>
-- ##### [Parsers description](https://en.wikipedia.org/wiki/Parsing)
+- [Compilation Parsers](https://en.wikipedia.org/wiki/Parsing)
 
-### `Errors and exceptions` </br>
-- ##### [Errors description](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+- [Errors and exceptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
 
-### `Iterible API` </br>
-- ##### [Iterible API in JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
+- [Iterable API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
 
-### `Object-oriented programming` </br>
-- ##### [Object-oriented programming description](https://en.wikipedia.org/wiki/Object-oriented_programming)
+- [Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming)
 
-### `Promise API` </br>
-- ##### [Promise description](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [Promise API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-### `Meta-programming` </br>
-- ##### [Meta-programming description](https://en.wikipedia.org/wiki/Metaprogramming)
+- [Meta-programming](https://en.wikipedia.org/wiki/Metaprogramming)
 
-### `RegExp` </br>
-- ##### [RegExp description](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+- [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
-</hr>
+## `Practice`
+- Practice with command line
+- Practice with CS (base, architecture)
 
-# Practice
-### `Practice with command line`
-### `Practice with CS (base, arhitecture)`
+## `Resolve Problems`
+Problems interesting for me or work case in my study trip
 
-</hr>
 
-# Resolve Problems
-### `My favorite problems, interesting for me.`
-
-##### Languages: `Java`, `JS`, `TS`, `Bash`
+## `Languages`
+- Java
+- JS
+- TS
+- Bash
