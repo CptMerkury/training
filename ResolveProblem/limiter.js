@@ -21,6 +21,12 @@ async function request(id) {
   })
 }
 
+/**
+ *
+ * @param req
+ * @param limit
+ * @returns {Generator<string, void, *>}
+ */
 function* limiter(req, limit) {
   for (let i = 0; i < req.length; i++) {
     request(req[i])

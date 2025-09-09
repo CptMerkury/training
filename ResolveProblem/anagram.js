@@ -7,6 +7,12 @@ console.log(anagram('cat', 'aca'));
 console.log(anagram('tag', 'gat'));
 console.log(anagram('', ''));
 
+/**
+ *
+ * @param {string} a
+ * @param {string} b
+ * @returns {boolean}
+ */
 function anagram(a, b) {
   if (a.length !== b.length) {
     return false;

@@ -50,6 +50,11 @@ function getDuplicateBit(arr) {
   return duple
 }
 
+/**
+ *
+ * @param {Array<number>} nums
+ * @returns {number[]}
+ */
 function getDuplicate(nums) {
   console.time('getDuplicate');
   const read = new Array(nums.length).fill(false);

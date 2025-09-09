@@ -1,7 +1,19 @@
+/**
+ *
+ * @param {number}a
+ * @param {number}b
+ * @param {number}c
+ * @returns {number}
+ */
 function sumThree(a, b, c ) {
   return a + b + c;
 }
 
+/**
+ *
+ * @param {function} func
+ * @returns {(function(...[*]): (*))|*}
+ */
 function curry(func) {
   return function curried(...args) {
     if (args.length === func.length) {

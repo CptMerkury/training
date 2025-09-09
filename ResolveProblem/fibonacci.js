@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {number}num
+ * @returns {any[]}
+ */
 function fibonacci(num) {
   const res = new Array(num).fill(0);
 

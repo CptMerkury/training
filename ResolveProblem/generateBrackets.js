@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {number}n
+ * @returns {Array<string>}
+ */
 function generateBrackets(n) {
   const result = [];
 
