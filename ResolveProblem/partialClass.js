@@ -8,12 +8,11 @@ class Example extends Parent {
 }
 
 /* Etalon solution */
-// function partial(ex, mixin) {
-//   Object.setPrototypeOf(mixin, Object.getPrototypeOf(ex.prototype))
-//   Object.defineProperties(ex.prototype, Object.getOwnPropertyDescriptors(mixin))
-// }
-
-/* Solution after time */
+/**
+ *
+ * @param {Class} ex
+ * @param {Object} mixin
+ */
 function partial(ex, mixin) {
   Object.setPrototypeOf(mixin, Object.getPrototypeOf(ex.prototype))
   Object.defineProperties(ex.prototype, Object.getOwnPropertyDescriptors(mixin))

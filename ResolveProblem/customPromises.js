@@ -4,7 +4,7 @@
  * @returns {Promise<unknown>}
  */
 function allSettled(iterable) {
-  const promises = [...iterable].map((iter) => Promise.resolve(iter));
+  const promises = iterable.map((iter) => Promise.resolve(iter));
   const result = new Array(promises.length)
   let total = 0;
 

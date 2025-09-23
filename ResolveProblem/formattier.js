@@ -18,6 +18,12 @@ function myFormat(str, obj) {
 }
 
 /* Etalon solution */
+/**
+ *
+ * @param {string} str
+ * @param {Object} obj
+ * @returns {string}
+ */
 function format(str, obj) {
   return str.replace(codeBlockRegEx, (_, expr) => {
     return Function(...Object.keys(obj), `return ${expr}`)(...Object.values(obj))
@@ -26,13 +32,3 @@ function format(str, obj) {
 
 console.log(myFormat('Hello ${name}! May age is ${age * 2}.', {name: 'Bob', age: 12})); // 'Hello Bob! My age is 24.'
 console.log(format('Hello ${name}! May age is ${age * 2}.', {name: 'Bob', age: 12})); // 'Hello Bob! My age is 24.'
-
-/* Solution after time */
-
-function formatAfterTime(str, obj) {
-  return str.replace(codeBlockRegEx, (_, expr) => {
-    return Function(...Object.keys(obj), `return ${expr}`)(...Object.values(obj))
-  })
-}
-
-console.log(formatAfterTime('Hello ${name}! May age is ${age * 2}.', {name: 'Bob', age: 12})); // 'Hello Bob! My age is 24.'
