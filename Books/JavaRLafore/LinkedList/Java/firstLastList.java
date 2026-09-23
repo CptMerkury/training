@@ -1,4 +1,4 @@
-package Books.LinkedList.Java;
+package LinkedList.Java;
 
 class FirstLastListApp {
     public static void main(String[] args) {

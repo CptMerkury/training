@@ -1,4 +1,4 @@
-package Books.Sorts.Java;
+package Sorts.Java;
 
 class BubbleSortApp {
     public static void main(String[] args) {

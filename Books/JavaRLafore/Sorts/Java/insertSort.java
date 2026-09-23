@@ -1,4 +1,4 @@
-package Books.Sorts.Java;
+package Sorts.Java;
 
 class InsertSortApp {
     public static void main(String[] args) {

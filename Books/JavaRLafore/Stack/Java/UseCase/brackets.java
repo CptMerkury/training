@@ -1,4 +1,4 @@
-package Books.Stack.Java.UseCase;
+package Stack.Java.UseCase;
 
 import java.io.BufferedReader;
 import java.io.IOException;

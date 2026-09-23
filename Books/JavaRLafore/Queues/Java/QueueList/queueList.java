@@ -1,4 +1,4 @@
-package Books.Queues.Java.QueueList;
+package Queues.Java.QueueList;
 
 class QueueListApp {
     public static void main(String[] args) {

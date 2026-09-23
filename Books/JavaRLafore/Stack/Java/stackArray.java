@@ -1,4 +1,4 @@
-package Books.Stack.Java;
+package Stack.Java;
 
 class ArrayApp {
     public static void main(String[] args) {

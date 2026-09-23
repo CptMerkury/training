@@ -1,4 +1,4 @@
-package Books.LinkedList.Java.useCase;
+package LinkedList.Java.UseCase;
 
 class InsertSortedArrayApp {
     public static void main(String[] args) {

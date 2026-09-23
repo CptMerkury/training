@@ -1,3 +1,5 @@
+package Array.Java;
+
 class DataApp {
     public static void main(String[] args) {
         int maxSize = 100;

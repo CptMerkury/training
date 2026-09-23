@@ -1,4 +1,4 @@
-package Books.Queues.Java.PriorityQueue;
+package Queues.Java.PriorityQueue;
 
 import java.io.IOException;
 

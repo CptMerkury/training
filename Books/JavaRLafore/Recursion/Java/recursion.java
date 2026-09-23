@@ -1,4 +1,4 @@
-package Books.Recursion.Java;
+package Recursion.Java;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
